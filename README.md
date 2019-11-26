@@ -1,2 +1,1 @@
-# parallel
-WQD7008 Parallel and Distributed Computing Project
+# WQD7008 Parallel and Distributed Computing Project
