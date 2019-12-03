@@ -20,7 +20,7 @@ Image Classification with Spark in Raspberry Pi
 
 
 ## 3. Methodology
-
+![alt text](https://github.com/shienlong/parallel/blob/master/Archi01.JPG)
 
 ## 4. Explanation of all the components being involved in the project. Adjustment of why these components are being used.
 
