@@ -17,7 +17,12 @@ Image Classification with Spark in Raspberry Pi
 
 
 ## 3. Scenario
+<suggestions - where and why apply image classification with edge node>
+common/commercially available example (may not want to use this but just as example) - home security, identify/classify person at door is authorized for entry.
 
+idea1 - automated farming, chillie farms with automated robots that capture images of each chillie and classify as ready/not ready for picking. 
+idea2 - remote environment monitoring, ie: monitor changing terrain to identify soil movement
+idea3 - 
 
 ## 3. Methodology
 ![alt text](https://github.com/shienlong/parallel/blob/master/Archi01.JPG)
@@ -29,3 +34,5 @@ Image Classification with Spark in Raspberry Pi
 
 
 ## 6. Conclusion
+
+## 7. References
