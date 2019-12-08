@@ -13,8 +13,10 @@ Image Classification with Spark in Raspberry Pi
 ## 1. Introduction
 
 
-## 2. The objective of the project
-
+## 2. The objective of the project (Hafiz)
+- Build a cluster of machines
+- Delegate work for the machines using a distributed storage and processing framework
+- Orchestrate the communication between the machines using a central server
 
 ## 3. Scenario
 <suggestions - where and why apply image classification with edge node>
