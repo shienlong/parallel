@@ -2,6 +2,7 @@
 
 ## Project Title
 Image Classification with Spark in Raspberry Pi
+Image Processing with Hadoop in Raspberry Pi Cluster
 
 ## Team Members
 - WQD180041 - MUHAMMAD HAFIZ BIN KHAIRUDIN
@@ -17,6 +18,7 @@ Image Classification with Spark in Raspberry Pi
 - Build a cluster of machines
 - Delegate work for the machines using a distributed storage and processing framework
 - Orchestrate the communication between the machines using a central server
+- Build edge computing node that transfers data to cluster
 
 ## 3. Scenario
 <suggestions - where and why apply image classification with edge node>
@@ -57,7 +59,7 @@ idea3 -
 - Why:
   - Running Hadoop framework (both namenode/datanode)
   - Act as a VNC client
-  - 
+  - Edge computing node
 
 ### Node-RED
 - It's a programming tool to wire together hardwares devices, APIs and online services
