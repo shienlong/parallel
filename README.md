@@ -59,7 +59,7 @@ Phase 4: Visualization
 - Why:
   - The main advantage of using private wireless network in this setup is we can maintain the internal IPs of the machines at all time and avoid dealing with connectivity issues
 
-### Virtual Computing Network
+### Virtual Network Computing
 - A GUI software that uses Remote Frame Buffer Protocol (RFB) to control other computers by transmitting all the mouse and keyboard events from the origin (VNC Server) to the target (VNC Client)
 - Why:
   - Make it easier to interact with display-less computers like Raspberry Pi
