@@ -27,7 +27,7 @@ idea2 - remote environment monitoring, ie: monitor changing terrain to identify 
 idea3 - 
 
 ## 3. Methodology (Hafiz)
-![alt text](https://github.com/shienlong/parallel/blob/master/Archi01.JPG)
+![alt text](https://github.com/shienlong/parallel/blob/master/Archi02.JPG)
 
 
 
