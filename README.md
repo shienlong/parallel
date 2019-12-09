@@ -32,6 +32,23 @@ idea3 -
 ![alt text](https://github.com/shienlong/parallel/blob/master/Archi04.PNG)
 
 
+Phase 1: Data Acquisition
+
+- what type of data, format of data
+- where obtain data from
+
+Phase 2: Edge Pi
+
+- what is happening in this phase...
+
+Phase 3: HDFS (consist of namenode & datanode)
+
+- what is happening in this phase...
+
+Phase 4: Visualization
+
+- what is the output
+
 
 ## 4. Explanation of all the components being involved in the project. Adjustment of why these components are being used. (Hafiz)
 
