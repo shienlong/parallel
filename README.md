@@ -36,10 +36,15 @@ Phase 1: Data Acquisition
 
 - what type of data, format of data
 - where obtain data from
+https://projects.raspberrypi.org/en/projects/getting-started-with-picamera
+https://www.raspberrypi.org/products/camera-module-v2/
+We are simulating a camera that captures images and stores it in a folder (/home/pi/Pictures/NewImg). The camera will be Raspberry Pi Camera Module which uses the Sony IMX219. The sensor on the Sony IMX219 is a 8-megapixel camera which performs very well in low light. The module is connected to a Raspberry Pi (Edge Pi) via ribbon cable. 
 
 Phase 2: Edge Pi
 
 - what is happening in this phase...
+The Edge Pi uses Node-RED to watch for changes in the folder that stores images captured by camera module. The 
+/home/pi/Pictures/NewImg
 
 Phase 3: HDFS (consist of namenode & datanode)
 
