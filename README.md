@@ -46,8 +46,8 @@ Phase 2: Edge Pi
 
 - what is happening in this phase...
 - The Edge Pi uses Node-RED to watch for changes in the folder that stores images captured by camera module. 
-- When there is change in folder, Node-RED takes the message payload and using SSH transfer the newly added image to RP master. 
-- This flow is automated. 
+- When there is change in folder, Node-RED takes the message payload and using SSH transfer the newly added image to RP master (/home/pi/Desktop 
+- This flow (enabled by Node-RED) automates the process to detect new images and transfer via ssh to master. 
 
 Phase 3: HDFS (consist of namenode & datanode)
 
@@ -66,6 +66,7 @@ Phase 4: Visualization
 - Provide internet access to all the machines
 - Why:
   - The main advantage of using private wireless network in this setup is we can maintain the internal IPs of the machines at all time and avoid dealing with connectivity issues
+  - Do not have to fiddle with wiring Ethernet cables 
 
 ### Virtual Network Computing
 - A GUI software that uses Remote Frame Buffer Protocol (RFB) to control other computers by transmitting all the mouse and keyboard events from the origin (VNC Server) to the target (VNC Client)
@@ -96,10 +97,13 @@ Phase 4: Visualization
 - http://192.168.0.198:1880
 - http://192.168.0.198:1880/ui
 
+Node-RED flow programmed to detect new image and copy to master via SSH
 ![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_ImageSSH.PNG)
 
+Node-RED flow to monitor EdgePi CPU and GPU temperature
 ![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_TempFlow.PNG)
 
+Dashboard to show CPU and GPU temperature
 ![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_Dashboard_Temp.PNG)
 
 
