@@ -96,6 +96,13 @@ Phase 4: Visualization
 - http://192.168.0.198:1880
 - http://192.168.0.198:1880/ui
 
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_ImageSSH.PNG)
+
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_TempFlow.PNG)
+
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_Dashboard_Temp.PNG)
+
+
 ## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed.
 
 
