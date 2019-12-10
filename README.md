@@ -21,7 +21,7 @@ Image Processing with Hadoop in Raspberry Pi Cluster
 - Build edge computing node that transfers data to cluster
 
 ## 3. Scenario
-<suggestions - where and why apply image classification with edge node>
+<suggestions - where and why apply image classification/processing with edge node>
 common/commercially available example (may not want to use this but just as example) - home security, identify/classify person at door is authorized for entry.
 
 idea1 - automated farming, chillie farms with automated robots that capture images of each chillie and classify as ready/not ready for picking. 
@@ -36,15 +36,18 @@ Phase 1: Data Acquisition
 
 - what type of data, format of data
 - where obtain data from
+
 https://projects.raspberrypi.org/en/projects/getting-started-with-picamera
 https://www.raspberrypi.org/products/camera-module-v2/
+
 We are simulating a camera that captures images and stores it in a folder (/home/pi/Pictures/NewImg). The camera will be Raspberry Pi Camera Module which uses the Sony IMX219. The sensor on the Sony IMX219 is a 8-megapixel camera which performs very well in low light. The module is connected to a Raspberry Pi (Edge Pi) via ribbon cable. 
 
 Phase 2: Edge Pi
 
 - what is happening in this phase...
-The Edge Pi uses Node-RED to watch for changes in the folder that stores images captured by camera module. The 
-/home/pi/Pictures/NewImg
+- The Edge Pi uses Node-RED to watch for changes in the folder that stores images captured by camera module. 
+- When there is change in folder, Node-RED takes the message payload and using SSH transfer the newly added image to RP master. 
+- This flow is automated. 
 
 Phase 3: HDFS (consist of namenode & datanode)
 
@@ -89,7 +92,9 @@ Phase 4: Visualization
   - Comes with a very friendly browser-based flow editing
   - Rich ecosystem of flows that are shared by the community
   - Light-weight runtime (built on Node.js), so it's ideal for Raspberry Pi 
-
+  
+- http://192.168.0.198:1880
+- http://192.168.0.198:1880/ui
 
 ## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed.
 
