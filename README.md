@@ -46,7 +46,7 @@ Phase 2: Edge Pi
 
 - what is happening in this phase...
 - The Edge Pi uses Node-RED to watch for changes in the folder that stores images captured by camera module. 
-- When there is change in folder, Node-RED takes the message payload and using SSH transfer the newly added image to RP master (/home/pi/Desktop 
+- When there is change in folder, Node-RED takes the message payload and using SSH transfer the newly added image to RP master (/home/pi/Desktop) 
 - This flow (enabled by Node-RED) automates the process to detect new images and transfer via ssh to master. 
 
 Phase 3: HDFS (consist of namenode & datanode)
@@ -58,7 +58,7 @@ Phase 4: Visualization
 - what is the output
 
 
-## 4. Explanation of all the components being involved in the project. Adjustment of why these components are being used. (Hafiz)
+## 4. Explanation of all the components being involved in the project. Adjustment of why these components are being used.
 
 ### Wireless Router
 - Serve as a router and wireless access point
@@ -90,7 +90,8 @@ Phase 4: Visualization
   - Edge computing node
 
 ### Node-RED
-- It's a programming tool to wire together hardwares devices, APIs and online services
+- Open source tool developed by IBM Emerging Technology
+- It's a flow-based programming tool to wiring together hardwares devices, APIs and conected services
 - Why:
   - Comes with a very friendly browser-based flow editing
   - Rich ecosystem of flows that are shared by the community
