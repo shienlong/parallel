@@ -17,6 +17,7 @@ Image Processing with Hadoop in Raspberry Pi Cluster
 ## 2. The objective of the project (Hafiz)
 - Build a cluster of machines
 - Delegate work for the machines using a distributed storage and processing framework
+- Image processing with distributed framework
 - Orchestrate the communication between the machines using a central server
 - Build edge computing node that transfers data to cluster
 
