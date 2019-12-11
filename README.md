@@ -31,8 +31,7 @@ idea3 -
 ## 3. Methodology
 ![alt text](https://github.com/shienlong/parallel/blob/master/Archi04.PNG?raw=true)
 
-
-Phase 1: Data Acquisition
+**Phase 1: Data Acquisition**
 
 - what type of data, format of data
 - where obtain data from
@@ -42,18 +41,22 @@ https://www.raspberrypi.org/products/camera-module-v2/
 
 We are simulating a camera that captures images and stores it in a folder (/home/pi/Pictures/NewImg). The camera will be Raspberry Pi Camera Module which uses the Sony IMX219. The sensor on the Sony IMX219 is a 8-megapixel camera which performs very well in low light. The module is connected to a Raspberry Pi (Edge Pi) via ribbon cable. 
 
-Phase 2: Data Transfer
+**Phase 2: Data Transfer**
 
-- what is happening in this phase...
-- The Edge Pi uses Node-RED to watch for changes in the folder that stores images captured by camera module. 
-- When there is change in folder, Node-RED takes the message payload and using SSH transfer the newly added image to RP master (/home/pi/Desktop) 
-- This flow (enabled by Node-RED) automates the process to detect new images and transfer via ssh to master. 
+- The Edge Pi uses Node-RED to watch for changes in the folder that stores images captured by the camera module.
+- When there is change in folder, Node-RED takes the message payload and using SSH transfer the newly added image to Pi@Master (/home/pi/Desktop) 
+- This flow (enabled by Node-RED) automates the process of detecting new images in the source folder and transfer the delta via SSH protocol to the Pi@Master. 
 
-Phase 3: Data Processing
-- HDFS (consist of namenode & datanode)
-- what is happening in this phase...
+**Phase 3: Data Processing**
 
-Phase 4: Result
+- Two core components of Apache Hadoop are Hadoop Distributed File System (HDFS) and MapReduce
+- Because we're dealing with images, we're using an open source image processing library: Hadoop Image Processing Interface (HIPI) which is designed to be used with Hadoop
+- Once the data is ready, Pi@Master would then start doing the processing:
+  - The images would be represented as HipiImageBundle (HIB) format. A HIB is a collection of images represented as a single file on the HDFS.
+  - HIB would then run through the MapReduce flow...
+  - ...
+
+**Phase 4: Result**
 
 - what is the output
 
@@ -61,25 +64,33 @@ Phase 4: Result
 ## 4. Explanation of all the components being involved in the project. Adjustment of why these components are being used.
 
 ### Wireless Router
+![alt text](https://i.imgur.com/QoA1Uq0.jpg?raw=true)
+
 - Serve as a router and wireless access point
 - Provide private wireless network
 - Provide internet access to all the machines
 - Why:
-  - The main advantage of using private wireless network in this setup is we can maintain the internal IPs of the machines at all time and avoid dealing with connectivity issues
-  - Do not have to fiddle with wiring Ethernet cables 
+  - The main advantage of using private wireless network in this setup is we can maintain the static internal IPs of the machines at all time and avoid dealing with connectivity issues
+  - Do not have to fiddle with wiring Ethernet cables
 
 ### Virtual Network Computing
+![alt text](https://images.ctfassets.net/tvfg2m04ppj4/6ojbkPv0fLwYRLd6CQJynD/595d0f15453ca6a603f029bd51a5690d/main_image.png?w=800)
+
 - A GUI software that uses Remote Frame Buffer Protocol (RFB) to control other computers by transmitting all the mouse and keyboard events from the origin (VNC Server) to the target (VNC Client)
 - Why:
   - Make it easier to interact with display-less computers like Raspberry Pi
   - Monitoring connectivity and system logs in each Raspberry Pi
 
 ### Laptop (Windows 10 machine)
+![alt text](https://i.gadgets360cdn.com/large/windows_10_screenshot_laptop_1532433667290.jpg?raw=true)
+
 - Why:
   - Act as the VNC server
   - Act as the display unit to access VNC GUI and Node-RED Flow interface
 
 ### Raspberry Pi 4 (Model B)
+![alt text](https://whooptous.com/wp-content/uploads/2019/06/Raspberry-Pi-4-model-B.png?raw=true)
+
 - Low-cost compute unit
 - Wifi support
 - Come with Raspbian OS (Linux) easier to run applications like Hadoop and Node-RED
@@ -111,6 +122,8 @@ Dashboard to show CPU and GPU temperature
 
 ### Apache Hadoop
 ![alt text](https://static1.tothenew.com/blog/wp-content/uploads/2016/11/hadoop.png?raw=true)
+
+- 
 
 ### Hadoop Image Processing Interface (HIPI)
 ![alt text](http://hipi.cs.virginia.edu/images/hipi_pipeline.png?raw=true)
