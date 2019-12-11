@@ -13,10 +13,10 @@ Image Processing with Hadoop in Raspberry Pi Cluster
 ## 1. Introduction
 
 
-## 2. The objective of the project (Hafiz)
+## 2. The objective of the project
 - Build a cluster of machines
+- Build an image processing flow
 - Delegate work for the machines using a distributed storage and processing framework
-- Image processing with distributed framework
 - Orchestrate the communication between the machines using a central server
 - Build edge computing node that transfers data to cluster
 
@@ -42,18 +42,18 @@ https://www.raspberrypi.org/products/camera-module-v2/
 
 We are simulating a camera that captures images and stores it in a folder (/home/pi/Pictures/NewImg). The camera will be Raspberry Pi Camera Module which uses the Sony IMX219. The sensor on the Sony IMX219 is a 8-megapixel camera which performs very well in low light. The module is connected to a Raspberry Pi (Edge Pi) via ribbon cable. 
 
-Phase 2: Edge Pi
+Phase 2: Data Transfer
 
 - what is happening in this phase...
 - The Edge Pi uses Node-RED to watch for changes in the folder that stores images captured by camera module. 
 - When there is change in folder, Node-RED takes the message payload and using SSH transfer the newly added image to RP master (/home/pi/Desktop) 
 - This flow (enabled by Node-RED) automates the process to detect new images and transfer via ssh to master. 
 
-Phase 3: HDFS (consist of namenode & datanode)
-
+Phase 3: Data Processing
+- HDFS (consist of namenode & datanode)
 - what is happening in this phase...
 
-Phase 4: Visualization
+Phase 4: Result
 
 - what is the output
 
