@@ -29,7 +29,7 @@ idea2 - remote environment monitoring, ie: monitor changing terrain to identify 
 idea3 - 
 
 ## 3. Methodology
-![alt text](https://github.com/shienlong/parallel/blob/master/Archi04.PNG)
+![alt text](https://github.com/shienlong/parallel/blob/master/Archi04.PNG?raw=true)
 
 
 Phase 1: Data Acquisition
@@ -77,7 +77,7 @@ Phase 4: Result
 ### Laptop (Windows 10 machine)
 - Why:
   - Act as the VNC server
-  - Act as the display unit to access VNC GUI and Node-RED interface
+  - Act as the display unit to access VNC GUI and Node-RED Flow interface
 
 ### Raspberry Pi 4 (Model B)
 - Low-cost compute unit
@@ -101,14 +101,19 @@ Phase 4: Result
 - http://192.168.0.198:1880/ui
 
 Node-RED flow programmed to detect new image and copy to master via SSH
-![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_ImageSSH.PNG)
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_ImageSSH.PNG?raw=true)
 
 Node-RED flow to monitor EdgePi CPU and GPU temperature
-![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_TempFlow.PNG)
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_TempFlow.PNG?raw=true)
 
 Dashboard to show CPU and GPU temperature
-![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_Dashboard_Temp.PNG)
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_Dashboard_Temp.PNG?raw=true)
 
+### Apache Hadoop
+![alt text](https://static1.tothenew.com/blog/wp-content/uploads/2016/11/hadoop.png?raw=true)
+
+### Hadoop Image Processing Interface (HIPI)
+![alt text](http://hipi.cs.virginia.edu/images/hipi_pipeline.png?raw=true)
 
 ## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed.
 
