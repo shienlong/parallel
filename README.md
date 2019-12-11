@@ -101,9 +101,15 @@ We are simulating a camera that captures images and stores it in a folder (/home
   - Edge computing node
 
 ### Node-RED
+![alt text](https://upload.wikimedia.org/wikipedia/commons/2/2b/Node-red-icon.png?raw=true)
+
+**About**
+
 - Open source tool developed by IBM Emerging Technology
 - It's a flow-based programming tool to wiring together hardwares devices, APIs and conected services
-- Why:
+
+**Why:**
+
   - Comes with a very friendly browser-based flow editing
   - Rich ecosystem of flows that are shared by the community
   - Light-weight runtime (built on Node.js), so it's ideal for Raspberry Pi 
