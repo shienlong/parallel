@@ -1,7 +1,6 @@
 # WQD7008 Parallel and Distributed Computing Project
 
 ## Project Title
-Image Classification with Spark in Raspberry Pi
 Image Processing with Hadoop in Raspberry Pi Cluster
 
 ## Team Members
@@ -29,7 +28,7 @@ idea1 - automated farming, chillie farms with automated robots that capture imag
 idea2 - remote environment monitoring, ie: monitor changing terrain to identify soil movement
 idea3 - 
 
-## 3. Methodology (Hafiz)
+## 3. Methodology
 ![alt text](https://github.com/shienlong/parallel/blob/master/Archi04.PNG)
 
 
@@ -73,10 +72,12 @@ Phase 4: Visualization
 - A GUI software that uses Remote Frame Buffer Protocol (RFB) to control other computers by transmitting all the mouse and keyboard events from the origin (VNC Server) to the target (VNC Client)
 - Why:
   - Make it easier to interact with display-less computers like Raspberry Pi
-  - 
+  - Monitoring connectivity and system logs in each Raspberry Pi
 
 ### Laptop (Windows 10 machine)
-- Act as the VNC server
+- Why:
+  - Act as the VNC server
+  - Act as the display unit to access VNC GUI and Node-RED interface
 
 ### Raspberry Pi 4 (Model B)
 - Low-cost compute unit
