@@ -117,8 +117,10 @@ We are simulating a camera that captures images and stores it in a folder (/home
 - http://192.168.0.198:1880
 - http://192.168.0.198:1880/ui
 
-Node-RED flow programmed to detect new image and copy to master via SSH
+### Node-RED flow programmed to detect new image and copy to master via SSH
 ![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_ImageSSH.PNG?raw=true)
+
+The "Watch NewImg Folder" node watches for new image to be added into "NewImg" folder, then an execute node will execute a "scp" secure copy command via EdgePi's terminal to transfer the image which is in form of message payload buffer. The "scp" command is "scp...", it performs a secure copy of the new image file and transfer via SSH to the "TempImg" folder in Pi@Master. 
 
 Node-RED flow to monitor EdgePi CPU and GPU temperature
 ![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_TempFlow.PNG?raw=true)
