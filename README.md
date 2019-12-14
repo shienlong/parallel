@@ -118,15 +118,34 @@ We are simulating a camera that captures images and stores it in a folder (/home
 - http://192.168.0.198:1880/ui
 
 #### Node-RED flow programmed to detect new image and copy to master via SSH
-![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_ImageSSH.PNG?raw=true)
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_ImageSSH02.PNG?raw=true)
 
-The "Watch NewImg Folder" node watches for new image to be added into "NewImg" folder, then an execute node will execute a "scp" secure copy command via EdgePi's terminal to transfer the image which is in form of message payload buffer. The "scp" command is "scp...", it performs a secure copy of the new image file and transfer via SSH to the "TempImg" folder in Pi@Master. 
+The "Watch NewImg Folder" node watches for new image to be added into "NewImg" folder, then an execute node will execute a "scp" secure copy command via EdgePi's terminal to transfer the image which is in form of message payload buffer. The "scp" command is "scp...", it performs a secure copy of the new image file and transfer via SSH to the "TempImg" folder in Pi@Master.
+
+A "file" node in parallel takes the output message payload and converts it to object buffer. That buffer is converted to base64 encoding and passed to dashboard to display image. 
+
+The dashboard UI can be viewed via:
+http://192.168.0.198:1880/ui
+
+or with internet connection, using DNS nameserver (a username and password is required to secure EdgePi as this method is using portforwarding):
+http://nodered7008.duckdns.org:1880/ui
 
 #### Node-RED flow to monitor EdgePi CPU and GPU temperature
-![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_TempFlow.PNG?raw=true)
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_TempFlow02.PNG?raw=true)
+
+The EdgePi deployed into the environment will be subjected to temperature variation of the environment. A separate flow is created to obtain EdgePi CPU and GPU temperature info and display on the dashboard for monitoring. 
+
+The flow starts with "timestamp" node where a repeat loop with interval of 1s is enabled. Then "execute" nodes are created to input commands for CPU and GPU respectively. 
+
+CPU command - "cat /sys/class/thermal/thermal_zone0/temp"
+GPU command - "vcgencmd measure_temp"
+
+The outputs of the execute nodes are then passed through functions to extract temperature info. The info is the updated to the dashboard. 
 
 #### Dashboard to show CPU and GPU temperature
-![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_Dashboard_Temp.PNG?raw=true)
+![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_Dashboard_Temp02.PNG?raw=true)
+
+The simple dashboard displays the temperature gauge of GPU and CPU as well as the new image that was detected in the folder. 
 
 ### Apache Hadoop
 ![alt text](https://static1.tothenew.com/blog/wp-content/uploads/2016/11/hadoop.png?raw=true)
