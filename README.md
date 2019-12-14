@@ -53,7 +53,7 @@ We are simulating a camera that captures images and stores it in a folder (/home
 - Because we're dealing with images, we're using an open source image processing library: Hadoop Image Processing Interface (HIPI) which is designed to be used with Hadoop
 - Once the data is ready, Pi@Master would then start doing the processing:
   - The images would be represented as HipiImageBundle (HIB) format. A HIB is a collection of images represented as a single file on the HDFS.
-  - HIB would then run through the MapReduce flow...
+  - HIB would then run through the MapReduce flow
   - ...
 
 **Phase 4: Result**
@@ -102,6 +102,17 @@ We are simulating a camera that captures images and stores it in a folder (/home
 
 ### Node-RED
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/2/2b/Node-red-icon.png?raw=true)
+**Installation Steps:**
+
+```
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+```
+
+To make sure the Node-RED service can autostart on Raspberry Pi boot, add this command as well:
+
+```
+sudo systemctl enable nodered.service
+```
 
 **About**
 
@@ -150,12 +161,16 @@ The simple dashboard displays the temperature gauge of GPU and CPU as well as th
 ### Apache Hadoop
 ![alt text](https://static1.tothenew.com/blog/wp-content/uploads/2016/11/hadoop.png?raw=true)
 
-- 
+**Installation Steps:**
+(refer to Jonathan's step)
+
+**Why**
+-
 
 ### Hadoop Image Processing Interface (HIPI)
 ![alt text](http://hipi.cs.virginia.edu/images/hipi_pipeline.png?raw=true)
 
-**Installation Steps:
+**Installation Steps:**
 
 ```
 $ git clone git@github.com:uvagfx/hipi.git
@@ -182,19 +197,26 @@ BUILD SUCCESSFUL
 
 Total time: 2.058 secs
 ```
+**About:**
 
-
+**Why:**
 
 ## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed. (Hafiz)
 
 Results:
 
+
+
 Discussion:
 
-Roadmap:
+Roadmap: (Maybe in table format)
+
 - Build a cluster of machines
+  - A desktop and 3 Raspberry Pi's are connected in one cluster
 - Build an image processing flow
+  - We use the HIPI framework to do a basic image processing
 - Delegate work for the machines using a distributed storage and processing framework
+  - We use Apache Hadoop to distribute the work between the Pi's  
 - Orchestrate the communication between the machines using a central server
 - Build edge computing node that transfers data to cluster
 
