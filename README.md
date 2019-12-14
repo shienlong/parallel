@@ -152,7 +152,7 @@ The flow starts with "timestamp" node where a repeat loop with interval of 1s is
 
 The outputs of the execute nodes are then passed through functions to extract temperature info. The info is the updated to the dashboard. 
 
-#### Dashboard to show CPU and GPU temperature
+#### Dashboard to show EdgePi CPU and GPU temperature
 ![alt text](https://github.com/shienlong/parallel/blob/master/NodeRed_Dashboard_Temp02.PNG?raw=true)
 
 The simple dashboard displays the temperature gauge of GPU and CPU as well as the new image that was detected in the folder. 
