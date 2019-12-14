@@ -137,8 +137,8 @@ The EdgePi deployed into the environment will be subjected to temperature variat
 
 The flow starts with "timestamp" node where a repeat loop with interval of 1s is enabled. Then "execute" nodes are created to input commands for CPU and GPU respectively. 
 
--CPU command - "cat /sys/class/thermal/thermal_zone0/temp"
--GPU command - "vcgencmd measure_temp"
+*CPU command, "cat /sys/class/thermal/thermal_zone0/temp"
+*GPU command, "vcgencmd measure_temp"
 
 The outputs of the execute nodes are then passed through functions to extract temperature info. The info is the updated to the dashboard. 
 
