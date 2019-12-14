@@ -155,6 +155,36 @@ The simple dashboard displays the temperature gauge of GPU and CPU as well as th
 ### Hadoop Image Processing Interface (HIPI)
 ![alt text](http://hipi.cs.virginia.edu/images/hipi_pipeline.png?raw=true)
 
+**Installation Steps:
+
+```
+$ git clone git@github.com:uvagfx/hipi.git
+$ cd hipi
+$ gradle
+:core:compileJava
+:core:processResources
+:core:classes
+:core:jar
+:tools:downloader:compileJava
+:tools:downloader:processResources
+:tools:downloader:classes
+:tools:downloader:jar
+:tools:dumpHib:compileJava
+:tools:dumpHib:processResources
+:tools:dumpHib:classes
+:tools:dumpHib:jar
+...
+:install
+
+Finished building the HIPI library along with all tools and examples.
+
+BUILD SUCCESSFUL
+
+Total time: 2.058 secs
+```
+
+
+
 ## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed. (Hafiz)
 
 Results:
