@@ -393,7 +393,7 @@ A framework for distributed storage and processing of big data using the MapRedu
 **Why**
 
 - Open source
-- Store and process huge amounts of data quickly
+- Store and process huge amounts of data quickly (parallelisation)
 - Distributed computing power that scale linearly with the number of nodes
 - Built-in fault tolerant features such as redundant copies and tasks re-delegation in case of node failures
 - HDFS is a flexible type of data storage that allow the framework to handle all kinds of data
@@ -446,22 +446,45 @@ Total time: 2.058 secs
 
 ## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed.
 
-Results:
+**Results:**
+
+- The system built is able to achieve parallel images processing using a distributed framework
 
 
+**Discussion:**
 
-Discussion:
+- Challenges when dealing with binaries (e.g images file format) within HDFS
+  - At first, we tried to achieve image processing by just using Hadoop
+  - The file block chunking in HDFS making it difficult to get the original image for processing after split
+  - HIPI makes this process seamless by guaranteeing that the Reducer would combine back all the images
+- Challenges when trying to integrate machine learning algorithms not available in Java (or natively supported in Hadoop)
+  - We tried to use Tensorflow image classifier, but the integration with other languages/docker images within Hadoop would require an integration with Hadoop Streaming feature (would allow us to communicate with Map/Reducer using stdin/stdout)
+- Challenges when dealing with cluster setup
+  - Network?
+  - Authorization?
+- Performance penalty when using wireless network for the cluster setup
+  - ??
+- Challenges with integrating with Node-RED
+  - ??
 
-Roadmap: (Maybe in table format)
+**Roadmap:** (Maybe use table)
 
 - Build a cluster of machines
-  - A desktop and 3 Raspberry Pi's are connected in one cluster
+  - A desktop and 3 Raspberry Pi's are connected in one cluster (Achieved) within a private network
+  - Deploy the flow into a public cloud (Future)
 - Build an image processing flow
-  - We use the HIPI framework to do a basic image processing
+  - We use the HIPI framework to do an image processing task (Achieved)
+  - Extend the MapReduce processing to include non-Java machine libraries (e.g Python's Caffe) using Apache Streaming (Future)
+  - Explore Apache Submarine for a distributed machine learning framework (Future)
+  - Explore image classification flow (e.g Apache Spark) (Future)
 - Delegate work for the machines using a distributed storage and processing framework
-  - We use Apache Hadoop to distribute the work between the Pi's  
+  - We use Apache Hadoop to distribute the work between the Pi's (Achieved)
+  - Integrate Hadoop YARN for cluster resource management (Future)
 - Orchestrate the communication between the machines using a central server
-- Build edge computing node that transfers data to cluster
+  - We rely on Node-RED and VNC to communicate data and input between machines (Achieved)
+  - Integrate process result feedback cycle into the Node-RED server (Future)
+  - Publish the computed result to a web service deployed in the internet (Future) 
+- Build edge computing node that transfers data to cluster (Achieved)
 
 
 ## 6. Conclusion
