@@ -383,11 +383,21 @@ The simple dashboard displays the temperature gauge of GPU and CPU as well as th
 ### Apache Hadoop
 ![alt text](https://static1.tothenew.com/blog/wp-content/uploads/2016/11/hadoop.png?raw=true)
 
+**About:**
+
+A framework for distributed storage and processing of big data using the MapReduce programming model. It is designed to scale up from a single servers to thousands of machines, each offering local computation and storage. The framework has many modules such as Common, HDFS, YARN, MapReduce, Ozone, and Submarine.
+
 **Installation Steps:**
 (refer to Jonathan's step)
 
 **Why**
--
+
+- Open source
+- Store and process huge amounts of data quickly
+- Distributed computing power that scale linearly with the number of nodes
+- Built-in fault tolerant features such as redundant copies and tasks re-delegation in case of node failures
+- HDFS is a flexible type of data storage that allow the framework to handle all kinds of data
+- Framework that can easily scale by simply adding more nodes
 
 ### Hadoop Image Processing Interface (HIPI)
 ![alt text](http://hipi.cs.virginia.edu/images/hipi_pipeline.png?raw=true)
@@ -432,9 +442,9 @@ Total time: 2.058 secs
 - High-level library to interact with images processing on top of Hadoop
 - Help developers to focus on the processing logic instead of data handling on HDFS
 - Highly efficient and high-throughput implementation
-- Many integration with other popular libraries like OpenCV
+- Many integrations with other popular libraries like OpenCV
 
-## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed. (Hafiz)
+## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed.
 
 Results:
 
