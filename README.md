@@ -170,6 +170,10 @@ The simple dashboard displays the temperature gauge of GPU and CPU as well as th
 ### Hadoop Image Processing Interface (HIPI)
 ![alt text](http://hipi.cs.virginia.edu/images/hipi_pipeline.png?raw=true)
 
+A framework that takes image files as input, converts it to a HIPI Image Bundle (.hib) data type. There are two files after conversion, the file ending with ".hib.dat" is the data file containing images and 2nd file with ".hib" which is the index along with information of the offsets of each image in the data file. 
+
+Next, the HIPI framwork would then take converted files and behind the scenes will perform distribution of the image bundle across the map nodes. The images will then go through a culling stage before being fed as input to map tasks (Apache Hadoop). 
+
 **Installation Steps:**
 
 ```
