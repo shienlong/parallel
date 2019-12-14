@@ -21,12 +21,11 @@ Image Processing with Hadoop in Raspberry Pi Cluster
 - Build edge computing node that transfers data to cluster
 
 ## 3. Scenario
-<suggestions - where and why apply image classification/processing with edge node>
-common/commercially available example (may not want to use this but just as example) - home security, identify/classify person at door is authorized for entry.
+The project is suitable to be deployed to an array of industies which requires monitoring or collection of information in large facilities or a geographically expansive area. 
 
-idea1 - automated farming, chillie farms with automated robots that capture images of each chillie and classify as ready/not ready for picking. 
-idea2 - remote environment monitoring, ie: monitor changing terrain to identify soil movement
-idea3 - 
+An example is you own a large factory producing and packaging consumer products. The process starts with raw material processing at one end of the factory feeding machines and conveyer systems throughout the length of factory floor with some systems up to 2 storey in height. Periodic maintenance is key to ensuring optimum working condition for maximum output. 
+
+However, the rising labour cost and high attrition rate due to working environment is affecting maintenance schedule and effectiveness. Traditional monitoring systems are cumbersome and expensive as they need to be wired throughout the whole factory. Therefore a system where various edge sensors that are able to relay critical information wirelessly to a storage and processing node would be an elegant and cost effective solution. Given the number of machines, processes and monitoring required, a huge amount of data is generated, therefore having an off the shelf distributed storage and processing solution (ie: Raspberry Pi Hadoop Cluster), could be a very attractive proposition.  
 
 ## 3. Methodology
 ![alt text](https://github.com/shienlong/parallel/blob/master/Archi04.PNG?raw=true)
