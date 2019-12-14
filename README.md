@@ -51,13 +51,236 @@ We are simulating a camera that captures images and stores it in a folder (/home
 - Two core components of Apache Hadoop are Hadoop Distributed File System (HDFS) and MapReduce
 - Because we're dealing with images, we're using an open source image processing library: Hadoop Image Processing Interface (HIPI) which is designed to be used with Hadoop
 - Once the data is ready, Pi@Master would then start doing the processing:
+  - Use the `hibimport` tool to format raw images to a format that's compatible with the HIPI workflow
   - The images would be represented as HipiImageBundle (HIB) format. A HIB is a collection of images represented as a single file on the HDFS.
-  - HIB would then run through the MapReduce flow
-  - ...
+  - With successful import using `hibimport`, you'll see two files created on HDFS, `*.hib` and `*.hib.dat`
+  - HIB would then run through the MapReduce/HIPI flow to process the images 
+  - These are the shell commands run on the Pi@Master:
+
+```sh
+# run in the root of the HIPI directory
+# -> import images into the HIB format
+
+$ tools/hibImport.sh ~/home/pi/Desktop images.hib
+Input image directory: /home/pi/Desktop
+Output HIB: images.hib
+Overwrite HIB if it exists: false
+HIPI: Using default blockSize of [134217728].
+HIPI: Using default replication factor of [1].
+ ** added: 1.jpg
+ ** added: 2.jpg
+ ** added: 3.jpg
+Created: images.hib and images.hib.dat
+```
+
+```sh
+# run in the root of the HIPI directory
+# -> verify the content of the HIB file using the hibInfo tool
+
+$ tools/hibInfo.sh images.hib --show-meta
+Input HIB: images.hib
+Display meta data: true
+Display EXIF data: false
+IMAGE INDEX: 0
+   640 x 480
+   format: 1
+   meta: {source=/Users/hipiuser/SampleImages/1.jpg}
+IMAGE INDEX: 1
+   3210 x 2500
+   format: 1
+   meta: {source=/Users/hipiuser/SampleImages/2.jpg}
+IMAGE INDEX: 2
+   3810 x 2540
+   format: 1
+   meta: {source=/Users/hipiuser/SampleImages/3.jpg}
+Found [3] images.
+```
+
+```java
+// AveragePixelColor.java
+// this program will be the entrypoint for our processing logic
+
+import org.hipi.image.FloatImage;
+import org.hipi.image.HipiImageHeader;
+import org.hipi.imagebundle.mapreduce.HibInputFormat;
+
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+import java.io.IOException;
+
+public class AveragePixelColor extends Configured implements Tool {
+  
+  public static class AveragePixelColorMapper extends Mapper<HipiImageHeader, FloatImage, IntWritable, FloatImage> {
+    public void map(HipiImageHeader key, FloatImage value, Context context) 
+      throws IOException, InterruptedException {
+    }
+  }
+  
+  public static class AveragePixelColorReducer extends Reducer<IntWritable, FloatImage, IntWritable, Text> {
+    public void reduce(IntWritable key, Iterable<FloatImage> values, Context context) 
+      throws IOException, InterruptedException {
+    }
+  }
+  
+  public int run(String[] args) throws Exception {
+    // Check input arguments
+    if (args.length != 2) {
+      System.out.println("Usage: AveragePixelColor <input HIB> <output directory>");
+      System.exit(0);
+    }
+    
+    // Initialize and configure MapReduce job
+    Job job = Job.getInstance();
+    // Set input format class which parses the input HIB and spawns map tasks
+    job.setInputFormatClass(HibInputFormat.class);
+    // Set the driver, mapper, and reducer classes which express the computation
+    job.setJarByClass(AveragePixelColor.class);
+    job.setMapperClass(AveragePixelColorMapper.class);
+    job.setReducerClass(AveragePixelColorReducer.class);
+    // Set the types for the key/value pairs passed to/from map and reduce layers
+    job.setMapOutputKeyClass(IntWritable.class);
+    job.setMapOutputValueClass(FloatImage.class);
+    job.setOutputKeyClass(IntWritable.class);
+    job.setOutputValueClass(Text.class);
+    
+    // Set the input and output paths on the HDFS
+    FileInputFormat.setInputPaths(job, new Path(args[0]));
+    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+    // Execute the MapReduce job and block until it complets
+    boolean success = job.waitForCompletion(true);
+    
+    // Return success or failure
+    return success ? 0 : 1;
+  }
+  
+  public static void main(String[] args) throws Exception {
+    ToolRunner.run(new AveragePixelColor(), args);
+    System.exit(0);
+  }
+  
+} // AveragePixelColor
+```
+
+```java
+// this program will run in the Map stage
+
+public static class AveragePixelColorMapper extends Mapper<HipiImageHeader, FloatImage, IntWritable, FloatImage> {
+    
+    public void map(HipiImageHeader key, FloatImage value, Context context) 
+        throws IOException, InterruptedException {
+
+      // Verify that image was properly decoded, is of sufficient size, and has three color channels (RGB)
+      if (value != null && value.getWidth() > 1 && value.getHeight() > 1 && value.getNumBands() == 3) {
+
+        // Get dimensions of image
+        int w = value.getWidth();
+        int h = value.getHeight();
+
+        // Get pointer to image data
+        float[] valData = value.getData();
+
+        // Initialize 3 element array to hold RGB pixel average
+        float[] avgData = {0,0,0};
+
+        // Traverse image pixel data in raster-scan order and update running average
+        for (int j = 0; j < h; j++) {
+          for (int i = 0; i < w; i++) {
+            avgData[0] += valData[(j*w+i)*3+0]; // R
+            avgData[1] += valData[(j*w+i)*3+1]; // G
+            avgData[2] += valData[(j*w+i)*3+2]; // B
+          }
+        }
+
+        // Create a FloatImage to store the average value
+        FloatImage avg = new FloatImage(1, 1, 3, avgData);
+
+        // Divide by number of pixels in image
+        avg.scale(1.0f/(float)(w*h));
+
+        // Emit record to reducer
+        context.write(new IntWritable(1), avg);
+
+      } // If (value != null...
+      
+    } // map()
+
+  } // AveragePixelColorMapper
+```
+
+```java
+// this program will run in the Reducer stage
+
+public static class AveragePixelColorReducer extends Reducer<IntWritable, FloatImage, IntWritable, Text> {
+
+    public void reduce(IntWritable key, Iterable<FloatImage> values, Context context)
+        throws IOException, InterruptedException {
+
+      // Create FloatImage object to hold final result
+      FloatImage avg = new FloatImage(1, 1, 3);
+
+      // Initialize a counter and iterate over IntWritable/FloatImage records from mapper
+      int total = 0;
+      for (FloatImage val : values) {
+        avg.add(val);
+        total++;
+      }
+
+      if (total > 0) {
+        // Normalize sum to obtain average
+        avg.scale(1.0f / total);
+        // Assemble final output as string
+	float[] avgData = avg.getData();
+        String result = String.format("Average pixel value: %f %f %f", avgData[0], avgData[1], avgData[2]);
+        // Emit output of job which will be written to HDFS
+        context.write(key, new Text(result));
+      }
+
+    } // reduce()
+
+  } // AveragePixelColorReducer
+```
+
+```sh
+$ gradle jar
+:core:compileJava UP-TO-DATE
+:core:processResources UP-TO-DATE
+:core:classes UP-TO-DATE
+:core:jar UP-TO-DATE
+:AveragePixelColor:compileJava
+:AveragePixelColor:processResources UP-TO-DATE
+:AveragePixelColor:classes
+:AveragePixelColor:jar
+
+BUILD SUCCESSFUL
+
+Total time: 0.855 secs
+```
+
+```sh
+$ hadoop jar AveragePixelColor.jar images.hib processed_images_output
+```
 
 **Phase 4: Result**
 
-- what is the output
+```sh
+$ hadoop fs -ls processed_images_output
+Found 2 items
+-rw-r--r--   1 user group        0 2015-03-13 09:52 processed_images_output/_SUCCESS
+-rw-r--r--   1 user group       50 2015-03-13 09:52 processed_images_output/part-r-00000
+```
 
 
 ## 4. Explanation of all the components being involved in the project. Adjustment of why these components are being used.
@@ -175,7 +398,7 @@ Next, the HIPI framwork would then take converted files and behind the scenes wi
 
 **Installation Steps:**
 
-```
+```sh
 $ git clone git@github.com:uvagfx/hipi.git
 $ cd hipi
 $ gradle
