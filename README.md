@@ -136,7 +136,18 @@ The "Watch NewImg Folder" node watches for new image to be added into "NewImg" f
 ### Hadoop Image Processing Interface (HIPI)
 ![alt text](http://hipi.cs.virginia.edu/images/hipi_pipeline.png?raw=true)
 
-## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed.
+## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed. (Hafiz)
+
+Results:
+
+Discussion:
+
+Roadmap:
+- Build a cluster of machines
+- Build an image processing flow
+- Delegate work for the machines using a distributed storage and processing framework
+- Orchestrate the communication between the machines using a central server
+- Build edge computing node that transfers data to cluster
 
 
 ## 6. Conclusion
