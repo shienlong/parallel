@@ -37,7 +37,7 @@ The other research paper that caught our attention was a research done by (Kaur,
 - Build edge computing node that transfers data to cluster
 
 ## 4. Scenario
-The project is suitable to be deployed to an array of industies which requires monitoring or collection of information in large facilities or a geographically expansive area. 
+The project is suitable to be deployed to an array of industries which requires monitoring or collection of information in large facilities or a geographically expansive area. 
 
 An example is you own a large factory producing and packaging consumer products. The process starts with raw material processing at one end of the factory feeding machines and conveyer systems throughout the length of factory floor with some systems up to 2 storey in height. Periodic maintenance is key to ensuring optimum working condition for maximum output. 
 
@@ -507,7 +507,7 @@ Total time: 2.058 secs
 ## 7. Conclusion
 Working through the objectives of the project presented to us the ability of edge computing and parallel distributed computing technology to solve issues in industries not limited to high performance computing or high throughput computing problems. 
 
-The advancement of semiconductor technology in nanometer range has enabled production of small form factor, low power consumption and high processing ability embedded into a microcontroller system on chip (SoC). This allowed proliferation of edge node applications (environmental sensors, image capture and video capture systems) at a very competitive cost model which previously would require huge capital investments. This is demonstrated via our usage of Raspberry Pi (Rm150-RM270) to run an edge node image transfer system. 
+The advancement of semiconductor technology in nanometer range has enabled production of small form factor, low power consumption and high processing ability embedded into a microcontroller system on chip (SoC). This allowed proliferation of edge node applications (environmental sensors, image capture and video capture systems) at a very competitive cost model which previously would require huge capital investments. This is demonstrated via our usage of Raspberry Pi (RM 150 - RM 270) to run an edge node image transfer system. 
 
 The edge nodes are geographically spread out (ie: over several thousand sq-ft of factory or farm land) makes it difficult to wire all these sensors. We demonstrated that with very low cost use of wireless routers, it is possible to connect networks of edge nodes without having wires. The only shortfall is the need for AC power supply, however with the availability of efficient solar array solutions and increase of low power embedded processors with smart power modes, it is possible to run these networks without AC power available. 
 
