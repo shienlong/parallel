@@ -485,24 +485,15 @@ Total time: 2.058 secs
   - Learning curve when dealing with many available options in the Node-RED workflow builder (e.g when to use what)
   - Port-forwarding and dynamic DNS hosting to allow collaboration on the Node-RED server
 
-**Roadmap:** (Maybe use table)
+**Roadmap:**
 
-- Build a cluster of machines
-  - A desktop and 3 Raspberry Pi's are connected in one cluster (Achieved) within a private network
-  - Deploy the flow into a public cloud (Future)
-- Build an image processing flow
-  - We use the HIPI framework to do an image processing task (Achieved)
-  - Extend the MapReduce processing to include non-Java machine libraries (e.g Python's Caffe) using Apache Streaming (Future)
-  - Explore Apache Submarine for a distributed machine learning framework (Future)
-  - Explore image classification flow (e.g Apache Spark) (Future)
-- Delegate work for the machines using a distributed storage and processing framework
-  - We use Apache Hadoop to distribute the work between the Pi's (Achieved)
-  - Integrate Hadoop YARN for cluster resource management (Future)
-- Orchestrate the communication between the machines using a central server
-  - We rely on Node-RED and VNC to communicate data and input between machines (Achieved)
-  - Integrate process result feedback cycle into the Node-RED server (Future)
-  - Publish the computed result to a web service deployed in the internet (Future) 
-- Build edge computing node that transfers data to cluster (Achieved)
+| Objectives                                                                          	| Achieved                                                                               	| Future Work                                                                                                                                                                                                                                              	|
+|-------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| Build a cluster of machines                                                         	| - A desktop and 3 Raspberry Pi's are connected in one cluster within a private network 	| - Deploy the flow into a public cloud                                                                                                                                                                                                                    	|
+| Build an image processing flow                                                      	| - We use the HIPI framework to do an image processing task                             	| - Extend the MapReduce processing to include non-Java machine libraries (e.g Python's Caffe) using Apache Streaming<br>- Explore Apache Submarine for a distributed machine learning framework<br>- Explore image classification flow (e.g Apache Spark) 	|
+| Delegate work for the machines using a distributed storage and processing framework 	| - We use Apache Hadoop to distribute the work between the Pi's                         	| - Integrate Hadoop YARN for cluster resource management                                                                                                                                                                                                  	|
+| Orchestrate the communication between the machines using a central server           	| - We rely on Node-RED and VNC to communicate data and input between machines           	| - Integrate process result feedback cycle into the Node-RED server<br>- Publish the computed result to a web service deployed in the internet                                                                                                            	|
+| Build edge computing node that transfers data to cluster                            	| - Data transfer from edge computing to a single cluster                                     	| - Data transfer between multiple edge computing clusters                                                                                                                                                                                                 	|
 
 
 ## 7. Conclusion
