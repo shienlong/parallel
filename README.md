@@ -507,3 +507,20 @@ Total time: 2.058 secs
 ## 7. Conclusion
 
 ## 8. References
+Aljasem, D. K., Heeney, M., Gritti, A. P., & Raimondi, F. (2016). On-the-Fly Image Classification to Help Blind People. Paper presented at the 2016 12th International Conference on Intelligent Environments (IE).
+
+Arsh, S., Bhatt, A., & Kumar, P. (2016). Distributed image processing using Hadoop and HIPI. Paper presented at the 2016 International Conference on Advances in Computing, Communications and Informatics (ICACCI).
+
+Dürr, O., Pauchard, Y., Browarnik, D., Axthelm, R., & Loeser, M. (2015). Deep Learning on a Raspberry Pi for Real Time Face Recognition. Paper presented at the Eurographics (Posters).
+
+Kaur, J., Sachdeva, K., & Singh, G. (2017). Image processing on multinode hadoop cluster. Paper presented at the 2017 International Conference on Electrical, Electronics, Communication, Computer, and Optimization Techniques (ICEECCOT).
+
+Kochláň, M., Hodoň, M., Čechovič, L., Kapitulík, J., & Jurečka, M. (2014). WSN for traffic monitoring using Raspberry Pi board. Paper presented at the 2014 Federated Conference on Computer Science and Information Systems.
+
+Mehta, P., & Tomar, P. (2016). An efficient attendance management sytem based on face recognition using Matlab and Raspberry Pi 2. International Journal of Engineering Technology Science and Research IJETSR, 3(5), 71-78. 
+
+Sweeney, Chris & Liu, Liu & Arietta, Sean & Lawrence, Jason. (2019). HIPI: A Hadoop Image Processing Interface for Image-based MapReduce Tasks. 
+
+Markovic, Dusan & Vujicic, Dejan & Dragana, Mitrović & Ranđić, Siniša. (2018). Image Processing on Raspberry Pi Cluster. 2. 83 - 90. 10.7251/IJEEC1802083M. 
+
+
