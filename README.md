@@ -291,8 +291,6 @@ $ hadoop jar AveragePixelColor.jar images.hib processed_images_output
 
 **Phase 4: Result**
 
-Two files would be created on a successful processing:
-
 ```sh
 $ hadoop fs -ls processed_images_output
 Found 2 items
@@ -300,12 +298,6 @@ Found 2 items
 -rw-r--r--   1 user group       50 2015-03-13 09:52 processed_images_output/part-r-00000
 ```
 
-Whenever a MapReduce program successfully finishes, it creates the file _SUCCESS in the output directory along with a part-r-XXXXX file for each reduce task. The average pixel value can be retrieved using the cat command:
-
-```sh
-$ hadoop fs -cat processed_images_output/part-r-00000
-1 Average pixel value: 0.321921 0.224995 0.150284
-```
 
 ## 6. Explanation of all the components being involved in the project. Adjustment of why these components are being used.
 
@@ -468,7 +460,7 @@ Total time: 2.058 secs
 - Highly efficient and high-throughput implementation
 - Many integrations with other popular libraries like OpenCV
 
-## 5. Result, Discussion, and Roadmap
+## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed.
 
 **Results:**
 
@@ -493,19 +485,36 @@ Total time: 2.058 secs
   - Learning curve when dealing with many available options in the Node-RED workflow builder (e.g when to use what)
   - Port-forwarding and dynamic DNS hosting to allow collaboration on the Node-RED server
 
-**Roadmap:**
+**Roadmap:** (Maybe use table)
 
-| Objectives                                                                          	| Achieved                                                                               	| Future Work                                                                                                                                                                                                                                              	|
-|-------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| Build a cluster of machines                                                         	| - A desktop and 3 Raspberry Pi's are connected in one cluster within a private network 	| - Deploy the flow into a public cloud                                                                                                                                                                                                                    	|
-| Build an image processing flow                                                      	| - We use the HIPI framework to do an image processing task                             	| - Extend the MapReduce processing to include non-Java machine libraries (e.g Python's Caffe) using Apache Streaming<br>- Explore Apache Submarine for a distributed machine learning framework<br>- Explore image classification flow (e.g Apache Spark) 	|
-| Delegate work for the machines using a distributed storage and processing framework 	| - We use Apache Hadoop to distribute the work between the Pi's                         	| - Integrate Hadoop YARN for cluster resource management                                                                                                                                                                                                  	|
-| Orchestrate the communication between the machines using a central server           	| - We rely on Node-RED and VNC to communicate data and input between machines           	| - Integrate process result feedback cycle into the Node-RED server<br>- Publish the computed result to a web service deployed in the internet                                                                                                            	|
-| Build edge computing node that transfers data to cluster                            	| - Data transfer from edge computing to a single cluster                                     	| - Data transfer between multiple edge computing clusters                                                                                                                                                                                                 	|
+- Build a cluster of machines
+  - A desktop and 3 Raspberry Pi's are connected in one cluster (Achieved) within a private network
+  - Deploy the flow into a public cloud (Future)
+- Build an image processing flow
+  - We use the HIPI framework to do an image processing task (Achieved)
+  - Extend the MapReduce processing to include non-Java machine libraries (e.g Python's Caffe) using Apache Streaming (Future)
+  - Explore Apache Submarine for a distributed machine learning framework (Future)
+  - Explore image classification flow (e.g Apache Spark) (Future)
+- Delegate work for the machines using a distributed storage and processing framework
+  - We use Apache Hadoop to distribute the work between the Pi's (Achieved)
+  - Integrate Hadoop YARN for cluster resource management (Future)
+- Orchestrate the communication between the machines using a central server
+  - We rely on Node-RED and VNC to communicate data and input between machines (Achieved)
+  - Integrate process result feedback cycle into the Node-RED server (Future)
+  - Publish the computed result to a web service deployed in the internet (Future) 
+- Build edge computing node that transfers data to cluster (Achieved)
 
 
 ## 7. Conclusion
-Working through the objectives of the project presented to us the ability of edge computing and parallel distributed computing technology to be adapted to possibly solve 
+Working through the objectives of the project presented to us the ability of edge computing and parallel distributed computing technology to solve issues in industries not limited to high performance computing or high throughput computing problems. 
+
+The advancement of semiconductor technology in nanometer range has enabled production of small form factor, low power consumption and high processing ability embedded into a microcontroller system on chip (SoC). This allowed proliferation of edge node applications (environmental sensors, image capture and video capture systems) at a very competitive cost model which previously would require huge capital investments. This is demonstrated via our usage of Raspberry Pi (Rm150-RM270) to run an edge node image transfer system. 
+
+The edge nodes are geographically spread out (ie: over several thousand sq-ft of factory or farm land) makes it difficult to wire all these sensors. We demonstrated that with very low cost use of wireless routers, it is possible to connect networks of edge nodes without having wires. The only shortfall is the need for AC power supply, however with the availability of efficient solar array solutions and increase of low power embedded processors with smart power modes, it is possible to run these networks without AC power available. 
+
+With the expansion of these edge nodes introduces high and fast streaming data which may not need to be analyzed immediately but would need to be processed and stored. A small medium industry (SME) player with less than 100 employees would likely not have the capital to invest in traditional server system, let alone be able to extract the data for analysis. However with the availability of IaaS such as IBM Watson, a SME would be able to connect their factory or farm sensor data stream to be stored in IBM cloud or other cloud infrastructure and be able to analyze their data at very low cost using the analysis and today AI tools made available. We demonstrate the distributed processing and storage of data using Raspberry Pi using Apache Hadoop as file storage system and HIPI as image processing framework. 
+
+This project has been a very interesting experience where we got to experience the power of edge computing and parallel distributed computing within a single project. In the future, it would be interesting to expand the processing of the images stored in Hadoop to perform classification. 
 
 ## 8. References
 Aljasem, D. K., Heeney, M., Gritti, A. P., & Raimondi, F. (2016). On-the-Fly Image Classification to Help Blind People. Paper presented at the 2016 12th International Conference on Intelligent Environments (IE).
