@@ -291,6 +291,8 @@ $ hadoop jar AveragePixelColor.jar images.hib processed_images_output
 
 **Phase 4: Result**
 
+Two files would be created on a successful processing:
+
 ```sh
 $ hadoop fs -ls processed_images_output
 Found 2 items
@@ -298,6 +300,12 @@ Found 2 items
 -rw-r--r--   1 user group       50 2015-03-13 09:52 processed_images_output/part-r-00000
 ```
 
+Whenever a MapReduce program successfully finishes, it creates the file _SUCCESS in the output directory along with a part-r-XXXXX file for each reduce task. The average pixel value can be retrieved using the cat command:
+
+```sh
+$ hadoop fs -cat processed_images_output/part-r-00000
+1 Average pixel value: 0.321921 0.224995 0.150284
+```
 
 ## 6. Explanation of all the components being involved in the project. Adjustment of why these components are being used.
 
