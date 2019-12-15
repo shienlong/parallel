@@ -468,7 +468,7 @@ Total time: 2.058 secs
 - Highly efficient and high-throughput implementation
 - Many integrations with other popular libraries like OpenCV
 
-## 5. Results (visualization) and discussion about findings. here you should also include a roadmap of each objective that has been addressed.
+## 5. Result, Discussion, and Roadmap
 
 **Results:**
 
