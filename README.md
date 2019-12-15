@@ -11,23 +11,39 @@ Image Processing with Hadoop in Raspberry Pi Cluster
 - WQD180027 - LIM SHIEN LONG
 
 ## 1. Introduction
+As an information medium, images are not only without language restrictions, but also rich in content. The number of images in various application fields has grown very rapidly. From astronomical observation to remote sensing on the ground, from e-commerce to social networking sites, terabyte-level images are being generated every day. Compared with text files, image files occupy a large space and have a slow processing speed. Therefore, improving the processing efficiency of images has important theoretical significance and practical value for specific applications.
+
+Hadoop handles text files by default, and image files are stored and processed in a different way from ordinary text files. Hadoop does not have its own image processing interface. Moreover, the Hadoop framework is very suitable for the operation of large files. Therefore, this article uses a third-party developed image processing interface HIPI (Hadoop Image Processing Interface), which combines the source images and stores them on HDFS for MapReduce processing.
+
+## 2. Previous case study
+According to our research, image classification using Raspberry Pi is not new as there are plenty of previous researches regarding it. To kick start was a research done by (Kochláň, Hodoň, Čechovič, Kapitulík, & Jurečka, 2014) where researchers for this paper conducted a research an image classification using a Raspberry Pi to monitor traffic flow. At the end of the researcher, researchers managed to obtain two findings, which is the traffic volume and vehicle class. Throughout this system, researchers managed to achieve an accuracy level of 95.7% and 63.2%, for traffic volume and vehicle class respectively. Unfortunately, the system was not able to identify the vehicle speed which due to the non-functional microwave speed detector.
+
+The other research paper that caught our attention was a research done by (Dürr, Pauchard, Browarnik, Axthelm, & Loeser, 2015) which previous researchers developed face recognition model using Raspberry Pi, model B, with the help of Convolutional Neural Network (CNN) classifier. Data source are images taken by researchers using Raspberry Pi camera which then being converted to 8-bit gray-scale before been downscaled to a 640x480 pixel resolution. Next researchers applied CNN to those images to detect faces. Other than that, previous researchers even  compared the classification accuracy level with Fisherface classifier but CNN turned out to perform better, 87.5% and 96.9% respectively.
+
+As an alternative to CNN there was a research done by (Mehta & Tomar, 2016) which implemented several types of algorithms for different purposes. Viola-Jones algorithm was used for face detection, combination of Local Binary Pattern (LBP) and Histogram Oriented Gradient (HOG) was used as face extraction, lastly Support Vector Machine (SVM) was used to recognize faces. Previous researchers acquire data based on the video taken from the camera that was connected to the controller board which then transferred to Matlab via wireless connection for further processing. From the video, a frame will be selected, which is in Red, Green, Blue (RGB) format that will then converted to greyscale as preparation for the next process. Viola-Jones algorithm was used for face detection before certain features were extracted from the cropped detected faces. Images undergone contrast improvement, background removal, and also conversion images to black and white during the pre-processing phase. Next, LBP and HOG were used to extract six features from the images before extracted images being compared with stored images in the database with the help of SVM. Researchers managed to obtained an accuracy level of 92% at the end of the project.
+
+According to previous research did by (Aljasem, Heeney, Gritti, & Raimondi, 2016), previous researchers implemented Raspberry Pi to classify images in real-time, aim to help blind individual. Data was acquired from cameras attached to Raspberry Pi which then being transferred to the local machine to manually classified into three categories; walkable, non-walkable, and average. Histogram of Oriented Gradients (HOG) was used upon these images, that had been classified, as an extraction process. Feature extracted images were converted into CSV files which then transferred to Weka, data mining tool, before Support Vector Machine (SVM) – best classification algorithm compared Naïve Bayesian classifier and Adaboost – being used by previous researchers to classify the images. Weka gave an indication between 0 to 1, where 0 is non-walkable and 1 is walkable, where input data resulted from the classification made by SVM. Indication from Weka – between 0 to 1 – then acted as a data input to the motor where motor is activated when Weka gave an output that is greater than 0.5.
+
+Based on previous research conducted by (Arsh, Bhatt, & Kumar, 2016), in which previous researchers managed to provide solution to increase the performance of image processing – detecting center of Organic-Light-Emitting-Diode – which is complex that demand for high computation power. At the end of the research, previous researchers have found out that more time was consumed to create different instances of mapper and to allocate in different nodes as number of rows processed by every mapper were small, compared to parallelized processing. Other than that, total number of mapper instances created, and logical splits decreased, as number of rows/columns per mapper increased. However, after certain value processing time increases as per mapper task increase beyond it as parallel processing more than compensate the process of instance creation. Due to this, previous researcher had concluded that splitting process is very crucial and need to be done in a manner where total work was divided equally. 
+
+The other research paper that caught our attention was a research done by (Kaur, Sachdeva, & Singh, 2017) in which previous researchers performed image processing on a Multinode Hadoop Cluster. Research used images from sources like cameras, the Internet, and also smartphone as an input data the were then placed in Hadoop Image Bundle (HIB). Researchers used Hadoop framework along with HIPI during the extraction process which only took a minute and thirteen seconds to process, that is so much faster when compared to traditional technologies. Previous also mentioned that with the help of batch processing in Hadoop, heavy jobs and time-consuming jobs that are repetitive can be done faster without any interaction. 
 
 
-## 2. The objective of the project
+## 3. The objective of the project
 - Build a cluster of machines
 - Build an image processing flow
 - Delegate work for the machines using a distributed storage and processing framework
 - Orchestrate the communication between the machines using a central server
 - Build edge computing node that transfers data to cluster
 
-## 3. Scenario
+## 4. Scenario
 The project is suitable to be deployed to an array of industies which requires monitoring or collection of information in large facilities or a geographically expansive area. 
 
 An example is you own a large factory producing and packaging consumer products. The process starts with raw material processing at one end of the factory feeding machines and conveyer systems throughout the length of factory floor with some systems up to 2 storey in height. Periodic maintenance is key to ensuring optimum working condition for maximum output. 
 
 However, the rising labour cost and high attrition rate due to working environment is affecting maintenance schedule and effectiveness. Traditional monitoring systems are cumbersome and expensive as they need to be wired throughout the whole factory. Therefore a system where various edge sensors that are able to relay critical information wirelessly to a storage and processing node would be an elegant and cost effective solution. Given the number of machines, processes and monitoring required, a huge amount of data is generated, therefore having an off the shelf distributed storage and processing solution (ie: Raspberry Pi Hadoop Cluster), could be a very attractive proposition.  
 
-## 3. Methodology
+## 5. Methodology
 ![alt text](https://github.com/shienlong/parallel/blob/master/Archi04.PNG?raw=true)
 
 **Phase 1: Data Acquisition**
@@ -283,7 +299,7 @@ Found 2 items
 ```
 
 
-## 4. Explanation of all the components being involved in the project. Adjustment of why these components are being used.
+## 6. Explanation of all the components being involved in the project. Adjustment of why these components are being used.
 
 ### Wireless Router
 ![alt text](https://i.imgur.com/QoA1Uq0.jpg?raw=true)
@@ -488,6 +504,6 @@ Total time: 2.058 secs
   - Publish the computed result to a web service deployed in the internet (Future) 
 - Build edge computing node that transfers data to cluster (Achieved)
 
-## 6. Conclusion
+## 7. Conclusion
 
-## 7. References
+## 8. References
