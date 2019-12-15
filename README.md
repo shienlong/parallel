@@ -505,7 +505,15 @@ Total time: 2.058 secs
 
 
 ## 7. Conclusion
-Working through the objectives of the project presented to us the ability of edge computing and parallel distributed computing technology to be adapted to possibly solve 
+Working through the objectives of the project presented to us the ability of edge computing and parallel distributed computing technology to solve issues in industries not limited to high performance computing or high throughput computing problems. 
+
+The advancement of semiconductor technology in nanometer range has enabled production of small form factor, low power consumption and high processing ability embedded into a microcontroller system on chip (SoC). This allowed proliferation of edge node applications (environmental sensors, image capture and video capture systems) at a very competitive cost model which previously would require huge capital investments. This is demonstrated via our usage of Raspberry Pi (Rm150-RM270) to run an edge node image transfer system. 
+
+The edge nodes are geographically spread out (ie: over several thousand sq-ft of factory or farm land) makes it difficult to wire all these sensors. We demonstrated that with very low cost use of wireless routers, it is possible to connect networks of edge nodes without having wires. The only shortfall is the need for AC power supply, however with the availability of efficient solar array solutions and increase of low power embedded processors with smart power modes, it is possible to run these networks without AC power available. 
+
+With the expansion of these edge nodes introduces high and fast streaming data which may not need to be analyzed immediately but would need to be processed and stored. A small medium industry (SME) player with less than 100 employees would likely not have the capital to invest in traditional server system, let alone be able to extract the data for analysis. However with the availability of IaaS such as IBM Watson, a SME would be able to connect their factory or farm sensor data stream to be stored in IBM cloud or other cloud infrastructure and be able to analyze their data at very low cost using the analysis and today AI tools made available. We demonstrate the distributed processing and storage of data using Raspberry Pi using Apache Hadoop as file storage system and HIPI as image processing framework. 
+
+This project has been a very interesting experience where we got to experience the power of edge computing and parallel distributed computing within a single project. In the future, it would be interesting to expand the processing of the images stored in Hadoop to perform classification. 
 
 ## 8. References
 Aljasem, D. K., Heeney, M., Gritti, A. P., & Raimondi, F. (2016). On-the-Fly Image Classification to Help Blind People. Paper presented at the 2016 12th International Conference on Intelligent Environments (IE).
