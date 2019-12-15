@@ -504,7 +504,9 @@ Total time: 2.058 secs
   - Publish the computed result to a web service deployed in the internet (Future) 
 - Build edge computing node that transfers data to cluster (Achieved)
 
+
 ## 7. Conclusion
+Working through the objectives of the project presented to us the ability of edge computing and parallel distributed computing technology to be adapted to possibly solve 
 
 ## 8. References
 Aljasem, D. K., Heeney, M., Gritti, A. P., & Raimondi, F. (2016). On-the-Fly Image Classification to Help Blind People. Paper presented at the 2016 12th International Conference on Intelligent Environments (IE).
