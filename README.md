@@ -449,23 +449,25 @@ Total time: 2.058 secs
 **Results:**
 
 - The system built is able to achieve parallel images processing using a distributed framework
-
+- The data pipeline is able to transfer data from raw images in a folder to the compute node
 
 **Discussion:**
 
 - Challenges when dealing with binaries (e.g images file format) within HDFS
   - At first, we tried to achieve image processing by just using Hadoop
   - The file block chunking in HDFS making it difficult to get the original image for processing after split
-  - HIPI makes this process seamless by guaranteeing that the Reducer would combine back all the images
+  - HIPI makes this process seamless by guaranteeing that the Reducer would combine back all the images into its original input
 - Challenges when trying to integrate machine learning algorithms not available in Java (or natively supported in Hadoop)
   - We tried to use Tensorflow image classifier, but the integration with other languages/docker images within Hadoop would require an integration with Hadoop Streaming feature (would allow us to communicate with Map/Reducer using stdin/stdout)
 - Challenges when dealing with cluster setup
-  - Network?
-  - Authorization?
-- Performance penalty when using wireless network for the cluster setup
-  - ??
-- Challenges with integrating with Node-RED
-  - ??
+  - Node Discovery: we have to use DHCP and static IPs to identify all members of the cluster
+  - Node Authentication: we have to use SSH authorized_keys to allow SSH session into each machine
+- Performance limitation when using wireless network for the cluster setup
+  - For a massive dataset processing, using an ethernet cable would improve the data throughput
+- Challenges when integrating with Node-RED
+  - Network Discovery: any interaction with the Pi nodes would require the Node-RED server to identify the IP address
+  - Learning curve when dealing with many available options in the Node-RED workflow builder (e.g when to use what)
+  - Port-forwarding and dynamic DNS hosting to allow collaboration on the Node-RED server
 
 **Roadmap:** (Maybe use table)
 
@@ -485,7 +487,6 @@ Total time: 2.058 secs
   - Integrate process result feedback cycle into the Node-RED server (Future)
   - Publish the computed result to a web service deployed in the internet (Future) 
 - Build edge computing node that transfers data to cluster (Achieved)
-
 
 ## 6. Conclusion
 
